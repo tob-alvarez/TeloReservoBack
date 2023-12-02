@@ -49,7 +49,7 @@ const login = async (req, res) => {
     const passOk = await bcrypt.compare(contraseña, user.contraseña);
     if (!passOk) throw new CustomError("Contraseña incorrecta", 400);
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "8h",
+      expiresIn: "4h",
     });
     res
       .status(200)
